@@ -10,8 +10,12 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <!-- jquery -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
-    <!-- parallax -->
-    <script src="/static/libs/parallax.js"></script>
+    <!-- gsap -->
+    <script src="//cdnjs.cloudflare.com/ajax/libs/gsap/1.17.0/TweenMax.min.js"></script>
+    <!-- scrollmagic -->
+    <script src="//cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.5/ScrollMagic.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.5/plugins/debug.addIndicators.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.5/plugins/animation.gsap.min.js"></script>
     <!-- custom -->
     <style type="text/css">
         .outer {
@@ -39,6 +43,16 @@
         .mdl-card a {
             text-decoration: none;
         }
+        .mdl-layout__content {
+            background-image: url('/static/images/creep2.png');
+            background-size: 100% auto;
+            background-repeat: no-repeat;
+            -webkit-transition: all 500ms ease;
+            -moz-transition: all 500ms ease;
+            -ms-transition: all 500ms ease;
+            -o-transition: all 500ms ease;
+            transition: all 500ms ease;
+        }
     </style>
     <script type="text/javascript">
         $(function() {
@@ -52,15 +66,35 @@
                     'transform': 'rotate(' + offset + 'deg)'
                 });
             });
-            $('.mdl-layout__content').parallax({
-                imageSrc: '/static/images/CREEPER.jpg',
-                position: 'top',
-                speed: 0.7,
-                bleed: 10,
-                iosFix: false,
-                androidFix: false
-            }); //*/
+            function resetBGPos() {
+                var bgHeight = $('.mdl-layout__content').width() * 1500 / 2000,
+                    yOffset = '0px calc(100vh - ' + bgHeight * 0.7 + 'px)';
+                $('.mdl-layout__content').css('background-position', yOffset);
+            }
+            $(window).resize(function() {
+                resetBGPos();
+            })
+            resetBGPos();
 
+            var controller = new ScrollMagic.Controller({
+                container: '.mdl-layout__content'
+            });
+
+            new ScrollMagic.Scene({
+                    triggerElement: '#sneak-trigger',
+                    offset: -200
+                })
+                .on('enter leave', function(e) {
+                    if (e.type == 'enter') {
+                        var bgHeight = $('.mdl-layout__content').width() * 1500 / 2000,
+                            yOffset = '0px calc(100vh - ' + bgHeight * 0.95 + 'px)';
+                        $('.mdl-layout__content').css('background-position', yOffset);
+                    } else {
+                        resetBGPos();
+                    }
+                })
+                .addIndicators()
+                .addTo(controller);
         });
     </script>
     <script type="text/javascript">
@@ -92,6 +126,7 @@
                 <h2 class="section-header">Select Works</h2>
                 <p>Coming soon (never).</p>
             </div>
+            <div id="sneak-trigger"></div>
             <div class="section-center last-section">
                 <h2 class="section-header">Contact</h2>
                 <p>You can contact me at sunwes at gmail dot com. I guess you can check out my <a target="_blank" href="https://www.linkedin.com/profile/view?id=50075336">Linkedin</a>, that's a thing.</p>
