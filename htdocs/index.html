@@ -120,6 +120,9 @@
                     if (e.type == 'enter') {
                         var bgHeight = $('.mdl-layout__content').width() * 441 / 2000,
                             yOffset = 'left 0px top calc(100vh - ' + Math.round(bgHeight * 0.95) + 'px)';
+                        if (navigator.userAgent.match(/iPhone/i)) {
+                            yOffset = 'left 0px top calc(100vh - ' + Math.round(bgHeight * 0.95 + 60) + 'px)';
+                        }
                         $('.mdl-layout__content').css('background-position', yOffset);
                     } else {
                         resetBGPos();
