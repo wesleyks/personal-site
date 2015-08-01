@@ -100,7 +100,7 @@
             });
             function resetBGPos() {
                 var bgHeight = $('.mdl-layout__content').width() * 441 / 2000,
-                    yOffset = '0px 100vh';
+                    yOffset = 'left 0px top 100vh';
                 $('.mdl-layout__content').css('background-position', yOffset);
             }
             $(window).resize(function() {
@@ -119,7 +119,7 @@
                 .on('enter leave', function(e) {
                     if (e.type == 'enter') {
                         var bgHeight = $('.mdl-layout__content').width() * 441 / 2000,
-                            yOffset = '0px calc(100vh - ' + bgHeight * 0.95 + 'px)';
+                            yOffset = 'left 0px top calc(100vh - ' + Math.round(bgHeight * 0.95) + 'px)';
                         $('.mdl-layout__content').css('background-position', yOffset);
                     } else {
                         resetBGPos();
