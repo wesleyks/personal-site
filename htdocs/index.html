@@ -4,10 +4,15 @@
     <title>Wesley &#9728;</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" type="image/ico" href="/static/images/favicon.ico">
-    <!-- css -->
     <!-- mdl -->
     <link rel="stylesheet" href="https://storage.googleapis.com/code.getmdl.io/1.0.1/material.indigo-pink.min.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <script src="https://storage.googleapis.com/code.getmdl.io/1.0.1/material.js"></script>
+    <!-- jquery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.js"></script>
+    <!-- scrollmagic -->
+    <script src="//cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.5/ScrollMagic.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.5/plugins/debug.addIndicators.js"></script>
     <!-- custom -->
     <style type="text/css">
         .outer {
@@ -36,7 +41,7 @@
             text-decoration: none;
         }
         .mdl-layout__content {
-            background-image: url('/static/images/creep2.jpg');
+            background-image: url('/static/images/creep2.png');
             background-size: 100% auto;
             background-position: 0px 100vh;
             background-repeat: no-repeat;
@@ -47,45 +52,6 @@
             transition: all 500ms ease;
         }
     </style>
-</head>
-<body>
-    <div class="mdl-layout mdl-js-layout">
-        <main class="mdl-layout__content">
-            <div class="mdl-typography--text-center site-intro outer">
-                <div class="inner">
-                    <img class="main-icon" src="/static/images/ANNOYINGFACE.jpg">
-                    <h1>Wesley Sun</h1>
-                    <span>Full Stack Engineer</span>
-                </div>
-            </div>
-            <div class="section-center">
-                <h2 class="section-header">About</h2>
-                <p>Hi! I'm a software engineer currently working at <a target="_blank" href="http://www.shmoop.com"><strong>Shmoop</strong></a>. I care about the entire pancake stack of whatever I'm working on and am currently focusing on developing my devops knowledge. I love architecting new solutions while considering speed, cost, and maintainability.</p>
-            </div>
-            <div class="section-center">
-                <h2 class="section-header">Select Works</h2>
-                <p>Coming soon (never).</p>
-            </div>
-            <div id="sneak-trigger"></div>
-            <div class="section-center last-section">
-                <h2 class="section-header">Contact</h2>
-                <p>You can contact me at sunwes at gmail dot com. I guess you can check out my <a target="_blank" href="https://www.linkedin.com/profile/view?id=50075336">Linkedin</a>, that's a thing.</p>
-                <br>
-                <br>
-            </div>
-        </main>
-    </div>
-    <!-- js -->
-    <!-- mdl -->
-    <script src="https://storage.googleapis.com/code.getmdl.io/1.0.1/material.min.js"></script>
-    <!-- jquery -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
-    <!-- gsap -->
-    <script src="//cdnjs.cloudflare.com/ajax/libs/gsap/1.17.0/TweenMax.min.js"></script>
-    <!-- scrollmagic -->
-    <script src="//cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.5/ScrollMagic.min.js"></script>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.5/plugins/debug.addIndicators.min.js"></script>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.5/plugins/animation.gsap.min.js"></script>
     <script type="text/javascript">
         $(function() {
             $('.mdl-layout__content').scroll(function() {
@@ -99,7 +65,7 @@
                 });
             });
             function resetBGPos() {
-                var bgHeight = $('.mdl-layout__content').width() * 441 / 2000,
+                var bgHeight = $('.mdl-layout__content').width() * 750 / 1000,
                     yOffset = 'left 0px top 100vh';
                 $('.mdl-layout__content').css('background-position', yOffset);
             }
@@ -118,7 +84,7 @@
                 })
                 .on('enter leave', function(e) {
                     if (e.type == 'enter') {
-                        var bgHeight = $('.mdl-layout__content').width() * 441 / 2000,
+                        var bgHeight = $('.mdl-layout__content').width() * 750 / 1000,
                             yOffset = 'left 0px top calc(100vh - ' + Math.round(bgHeight * 0.95) + 'px)';
                         if (navigator.userAgent.match(/iPhone/i)) {
                             yOffset = 'left 0px top calc(100vh - ' + Math.round(bgHeight * 0.95 + 60) + 'px)';
@@ -141,5 +107,33 @@
         var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
       })();
     </script>
+</head>
+<body>
+    <div class="mdl-layout mdl-js-layout">
+        <main class="mdl-layout__content">
+            <div class="mdl-typography--text-center site-intro outer">
+                <div class="inner">
+                    <img class="main-icon" src="/static/images/ANNOYINGFACE.png">
+                    <h1>Wesley Sun</h1>
+                    <span>Full Stack Engineer</span>
+                </div>
+            </div>
+            <div class="section-center">
+                <h2 class="section-header">About</h2>
+                <p>Hi! I'm a software engineer currently working at <a target="_blank" href="http://www.shmoop.com"><strong>Shmoop</strong></a>. I care about the entire pancake stack of whatever I'm working on and am currently focusing on developing my devops knowledge. I love architecting new solutions while considering speed, cost, and maintainability.</p>
+            </div>
+            <div class="section-center">
+                <h2 class="section-header">Select Works</h2>
+                <p>Coming soon (never).</p>
+            </div>
+            <div id="sneak-trigger"></div>
+            <div class="section-center last-section">
+                <h2 class="section-header">Contact</h2>
+                <p>You can contact me at sunwes at gmail dot com. I guess you can check out my <a target="_blank" href="https://www.linkedin.com/profile/view?id=50075336">Linkedin</a>, that's a thing.</p>
+                <br>
+                <br>
+            </div>
+        </main>
+    </div>
 </body>
 </html>
